@@ -64,7 +64,7 @@ class SegaIntro extends FlxState
 
         if(FlxG.keys.pressed.ENTER)
         {
-            FlxG.switchState(new PlayState());
+            FlxG.switchState(new DebugState());
         }
 
         super.update(elapsed);
