@@ -7,7 +7,7 @@ import flixel.util.FlxTimer;
 
 using StringTools;
 
-class Sonic extends Character
+class Sonic extends Chars
 {
 	public var stunned:Bool = false;
 

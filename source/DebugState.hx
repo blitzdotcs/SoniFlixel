@@ -8,7 +8,7 @@ import flixel.FlxSubState;
 import flixel.FlxObject;
 import flixel.FlxCamera;
 
-class PlayState extends FlxState
+class DebugState extends FlxState
 {
 	public var s1sonic:Sonic;
 
