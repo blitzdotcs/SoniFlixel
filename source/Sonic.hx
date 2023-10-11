@@ -1,0 +1,23 @@
+package;
+
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.util.FlxTimer;
+
+using StringTools;
+
+class Sonic extends Character
+{
+	public var stunned:Bool = false;
+
+	public function new(x:Float, y:Float)
+	{
+		super(x, y);
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+	}
+}
