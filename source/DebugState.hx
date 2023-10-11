@@ -30,7 +30,7 @@ class DebugState extends FlxState
 
 		if (debugMode)
 			// Might try to implement debug mode here but for now reset/restart the game
-            FlxG.switchState(new SegaIntro());
+            FlxG.resetState;
 
         if (!FlxG.keys.pressed.LEFT || !FlxG.keys.pressed.RIGHT || !FlxG.keys.pressed.UP || !FlxG.keys.pressed.DOWN || !FlxG.keys.pressed.Z)
         {  
