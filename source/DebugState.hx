@@ -18,7 +18,13 @@ class PlayState extends FlxState
 	{
         super.update(elapsed);
 
-        var movementSpeed:Float = 5;
+        var movementSpeed:Float = 6.78;
+        var jumpForce:Float = 6.5;
+        var debugMode:Bool = false;
+
+		if (debugMode)
+			// Might try to implement debug mode here but for now reset/restart the game
+            FlxG.switchState(new SegaIntro());
 
         if (!FlxG.keys.pressed.LEFT || !FlxG.keys.pressed.RIGHT || !FlxG.keys.pressed.UP || !FlxG.keys.pressed.DOWN || !FlxG.keys.pressed.Z)
         {  
@@ -49,8 +55,17 @@ class PlayState extends FlxState
 
         if (FlxG.keys.pressed.Z)
         {
-            s1sonic.animation.play('jumpie');
-            FlxG.sound.play(Paths.sound('scdjump'));
+            s1sonic.animation.play('jump');
         }
+
+        if (FlxG.keys.pressed.X)
+        {
+            s1sonic.animation.play('jump');
+        }  
+
+        if (FlxG.keys.pressed.C)
+        {
+            debugMode = true;
+        }              
 	}
 }

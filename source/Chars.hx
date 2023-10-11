@@ -14,8 +14,6 @@ class Character extends FlxSprite
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = 'sonic';
 
-	public var holdTimer:Float = 0;
-
 	public function new(x:Float, y:Float, ?character:String = "sonic", ?isPlayer:Bool = false)
 	{
 		animOffsets = new Map<String, Array<Dynamic>>();
@@ -46,71 +44,8 @@ class Character extends FlxSprite
 	}
 
 	override function update(elapsed:Float)
-	{
-		if (curCharacter != 'bf')
-		{
-			if (animation.curAnim.name.startsWith('sing'))
-			{
-				holdTimer += elapsed;
-			}
-
-			var dadVar:Float = 4;
-
-			if (curCharacter == 'dad')
-				dadVar = 6.1;
-			if (holdTimer >= Conductor.stepCrochet * dadVar * 0.001)
-			{
-				dance();
-				holdTimer = 0;
-			}
-		}
-
-		switch (curCharacter)
-		{
-			case 'gf':
-				if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
-					playAnim('danceRight');
-		}
-
+    {
 		super.update(elapsed);
-	}
-
-	private var danced:Bool = false;
-
-	/**
-	 * FOR GF DANCING SHIT
-	 */
-	public function dance()
-	{
-		switch (curCharacter)
-		{
-			case 'bf':
-
-			case 'gf':
-				if (!animation.curAnim.name.startsWith('hair'))
-				{
-					danced = !danced;
-
-					if (danced)
-						playAnim('danceRight');
-					else
-						playAnim('danceLeft');
-				}
-
-			case 'spooky':
-				danced = !danced;
-
-				if (danced)
-					playAnim('danceRight');
-				else
-					playAnim('danceLeft');
-			case 'dad':
-				playAnim('idle');
-			case 'monster':
-				playAnim('idle');
-			case 'pico':
-				playAnim('idle');
-		}
 	}
 
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
@@ -121,23 +56,6 @@ class Character extends FlxSprite
 		if (animOffsets.exists(animation.curAnim.name))
 		{
 			offset.set(daOffset[0], daOffset[1]);
-		}
-
-		if (curCharacter == 'gf')
-		{
-			if (AnimName == 'singLEFT')
-			{
-				danced = true;
-			}
-			else if (AnimName == 'singRIGHT')
-			{
-				danced = false;
-			}
-
-			if (AnimName == 'singUP' || AnimName == 'singDOWN')
-			{
-				danced = !danced;
-			}
 		}
 	}
 
