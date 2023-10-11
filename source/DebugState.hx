@@ -1,6 +1,12 @@
 package;
 
 import flixel.FlxState;
+import flixel.FlxSprite;
+import flixel.FlxG;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.FlxSubState;
+import flixel.FlxObject;
+import flixel.FlxCamera;
 
 class PlayState extends FlxState
 {
