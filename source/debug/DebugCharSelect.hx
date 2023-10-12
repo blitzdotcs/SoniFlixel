@@ -46,7 +46,13 @@ class DebugCharSelect extends FlxState
                 option.color = FlxColor.YELLOW;
         }
 
-        if (FlxG.keys.justPressed.Z) 
+        if (FlxG.keys.justPressed.ESCAPE) 
+        {
+            FlxG.switchState(new debug.DebugMenu());
+        }
+    
+
+        if (FlxG.keys.justPressed.ENTER) 
         {
             var selectedOption:String = textOptions[curSelected];
             trace("Selected option: " + selectedOption);

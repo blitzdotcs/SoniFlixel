@@ -22,6 +22,11 @@ class SoniFlixelIntro extends FlxState
             FlxG.switchState(new DebugState());
         }
 
+        if (FlxG.keys.pressed.C)
+        {
+            FlxG.switchState(new debug.DebugMenu());
+        }     
+
 		super.create();
 	}
 
