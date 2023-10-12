@@ -1,3 +1,4 @@
+// Just a copy of SegaIntro lol
 package;
 
 import flixel.FlxState;
@@ -5,7 +6,7 @@ import hxcodec.flixel.FlxVideo;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
-class SegaIntro extends FlxState
+class SoniFlixelIntro extends FlxState
 {
     var video:FlxVideo;
 
@@ -13,11 +14,12 @@ class SegaIntro extends FlxState
 	{
 		var video:FlxVideo = new FlxVideo();
 		video.onEndReached.add(onVideoEnd);
+        // TODO: Animate SoniFlixel intro in Aseprite
 		video.play('assets/vids/intoro!!/SEGASCREAM.mp4');
 
         if (FlxG.keys.pressed.ENTER)
         {
-            FlxG.switchState(new SoniFlixelIntro());
+            FlxG.switchState(new DebugState());
         }
 
 		super.create();
@@ -25,6 +27,6 @@ class SegaIntro extends FlxState
 
     public function onVideoEnd():Void
     {
-		FlxG.switchState(new SoniFlixelIntro());
+		FlxG.switchState(new DebugState());
     }    
 }

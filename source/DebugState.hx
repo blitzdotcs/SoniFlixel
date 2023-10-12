@@ -7,15 +7,24 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxSubState;
 import flixel.FlxObject;
 import flixel.FlxCamera;
+import chars.*;
 
 class DebugState extends FlxState
 {
 	public var s1sonic:Sonic;
+    var soniccamera:FlxCamera;
 
 	override public function create()
 	{
+        soniccamera = new FlxCamera(0, 0, FlxG.width, FlxG.height);
+        FlxG.cameras.add(soniccamera);
+        FlxCamera.defaultCameras = [soniccamera];
+
 		s1sonic = new Sonic(0, 0);
 		add(s1sonic);
+
+        soniccamera.follow(s1sonic, FlxCameraFollowStyle.LOCKON);
+        soniccamera.zoom = 2.5;
 
 		super.create();
 	}
@@ -29,8 +38,9 @@ class DebugState extends FlxState
         var debugMode:Bool = false;
 
 		if (debugMode)
-			// Might try to implement debug mode here but for now reset/restart the game
-            FlxG.resetState;
+        { 
+            FlxG.switchState(new debug.DebugMenu());
+        }    
 
         if (!FlxG.keys.pressed.LEFT || !FlxG.keys.pressed.RIGHT || !FlxG.keys.pressed.UP || !FlxG.keys.pressed.DOWN || !FlxG.keys.pressed.Z)
         {  
@@ -72,6 +82,7 @@ class DebugState extends FlxState
         if (FlxG.keys.pressed.C)
         {
             debugMode = true;
+            FlxG.switchState(new debug.DebugMenu());
         }              
 	}
 }
