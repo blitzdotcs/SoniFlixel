@@ -7,7 +7,7 @@ import flixel.FlxState;
 
 class DebugMenu extends FlxState 
 {
-    var textOptions:Array<String> = ["CharSelect", "StageSelect"];
+    var textOptions:Array<String> = ["CharSelect", "StageSelect", "Continue"];
     var textOptionsGroup:Array<FlxText> = [];
     var curSelected:Int = 0;
 
@@ -55,7 +55,9 @@ class DebugMenu extends FlxState
                 case "CharSelect":
                     FlxG.switchState(new debug.DebugCharSelect());
                 case "StageSelect":
-                    FlxG.switchState(new debug.DebugLevelSelect());                    
+                    FlxG.switchState(new debug.DebugLevelSelect());   
+                case "Continue":
+                    FlxG.switchState(new ContinueState());                     
             }
         }
     }

@@ -20,7 +20,7 @@ class DebugState extends FlxState
         FlxG.cameras.add(soniccamera);
         FlxCamera.defaultCameras = [soniccamera];
 
-		s1sonic = new Sonic(0, 0);
+		s1sonic = new Sonic(64, 64);
 		add(s1sonic);
 
         soniccamera.follow(s1sonic, FlxCameraFollowStyle.LOCKON);
@@ -36,6 +36,7 @@ class DebugState extends FlxState
         var movementSpeed:Float = 6.78;
         var jumpForce:Float = 6.5;
         var debugMode:Bool = false;
+        var deadorsum:Bool = false;
 
 		if (debugMode)
         { 
@@ -83,6 +84,18 @@ class DebugState extends FlxState
         {
             debugMode = true;
             FlxG.switchState(new debug.DebugMenu());
-        }              
+        }
+
+        if (FlxG.keys.pressed.R)
+        {
+            s1sonic.animation.play('deathlmaoz');
+            deadorsum = true;
+            switchtoContinue();
+        }                        
 	}
+
+    function switchtoContinue()
+    {
+        FlxG.switchState(new ContinueState());
+    }    
 }

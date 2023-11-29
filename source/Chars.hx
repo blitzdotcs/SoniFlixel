@@ -38,36 +38,9 @@ class Chars extends FlxSprite
 			    animation.addByPrefix('idle', "bored", 6);
 			    animation.addByPrefix('idleLOOP', "boredloop", 6);
 			    animation.addByPrefix('jump', "ball", 6);
+				animation.addByPrefix('deathlmaoz', "death", 6);
                 playAnim('idleLOOP');
-            }    
-
-			case 'tails':
-            {
-				tex = Paths.getSparrowAtlas('chars/TailsPlayer');
-				frames = tex;
-                animation.addByPrefix('down', "down", 6);
-                animation.addByPrefix('up', "up", 6);
-                animation.addByPrefix('run', "soncrun", 6);
-			    animation.addByPrefix('balance', "balancing", 6);
-			    animation.addByPrefix('idle', "bored", 6);
-			    animation.addByPrefix('idleLOOP', "boredloop", 6);
-			    animation.addByPrefix('jump', "ball", 6);
-                playAnim('idleLOOP');
-            }  
-
-			case 'knux':
-            {
-				tex = Paths.getSparrowAtlas('chars/KnuxPlayer');
-				frames = tex;
-                animation.addByPrefix('down', "down", 6);
-                animation.addByPrefix('up', "up", 6);
-                animation.addByPrefix('run', "soncrun", 6);
-			    animation.addByPrefix('balance', "balancing", 6);
-			    animation.addByPrefix('idle', "bored", 6);
-			    animation.addByPrefix('idleLOOP', "boredloop", 6);
-			    animation.addByPrefix('jump', "ball", 6);
-                playAnim('idleLOOP');
-            }  						
+            }    						
 		}
 	}
 
