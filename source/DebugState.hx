@@ -10,6 +10,7 @@ import flixel.FlxCamera;
 import chars.*;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.tile.FlxTilemap;
+import pathsshit.*;
 
 class DebugState extends FlxState
 {
@@ -26,14 +27,14 @@ class DebugState extends FlxState
 
         var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.loadImage('logo'));
 
-        map = new FlxOgmo3Loader(AssetPaths.turnBasedRPG__ogmo, AssetPaths.room_001__json);
-        walls = map.loadTilemap(AssetPaths.tiles__png, "walls");
+        map = new FlxOgmo3Loader(LevelPaths.SoniFlixelDebugLevel__ogmo, LevelPaths.DebugLevel__json);
+        walls = map.loadTilemap(LevelImagePaths.ghzground__png, "walls");
         walls.follow();
         walls.setTileProperties(1, NONE);
         walls.setTileProperties(2, ANY);
         add(walls);
 
-		s1sonic = new Sonic();
+		s1sonic = new Sonic(0, 0);
         map.loadEntities(placeEntities, "entities");
 		add(s1sonic);
 
@@ -47,7 +48,7 @@ class DebugState extends FlxState
 	{
         super.update(elapsed);
 
-        FlxG.collide(player, walls);
+        FlxG.collide(s1sonic, walls);
 
         var movementSpeed:Float = 6.78;
         var jumpForce:Float = 6.5;
@@ -112,9 +113,9 @@ class DebugState extends FlxState
 
     function placeEntities(entity:EntityData)
     {
-        if (entity.name == "player")
+        if (entity.name == "s1sonic")
         {
-            player.setPosition(entity.x, entity.y);
+            s1sonic.setPosition(entity.x, entity.y);
         }
     }
 
