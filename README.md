@@ -1,6 +1,6 @@
 # SoniFlixel
 
-* Basically a rewrite of ProjectCD but aimed to make the Sonic physics more accurate
+* Basically a rewrite of ProjectCD but aimed to actually be worked on and finished.
 
 * This is nowhere near finished so don't complain about anything, it's still in early development
 
