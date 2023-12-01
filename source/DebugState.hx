@@ -8,11 +8,15 @@ import flixel.FlxSubState;
 import flixel.FlxObject;
 import flixel.FlxCamera;
 import chars.*;
+import flixel.addons.editors.ogmo.FlxOgmo3Loader;
+import flixel.tile.FlxTilemap;
 
 class DebugState extends FlxState
 {
 	public var s1sonic:Sonic;
     var soniccamera:FlxCamera;
+    var map:FlxOgmo3Loader;
+    var walls:FlxTilemap;
 
 	override public function create()
 	{
@@ -20,7 +24,17 @@ class DebugState extends FlxState
         FlxG.cameras.add(soniccamera);
         FlxCamera.defaultCameras = [soniccamera];
 
-		s1sonic = new Sonic(64, 64);
+        var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.loadImage('logo'));
+
+        map = new FlxOgmo3Loader(AssetPaths.turnBasedRPG__ogmo, AssetPaths.room_001__json);
+        walls = map.loadTilemap(AssetPaths.tiles__png, "walls");
+        walls.follow();
+        walls.setTileProperties(1, NONE);
+        walls.setTileProperties(2, ANY);
+        add(walls);
+
+		s1sonic = new Sonic();
+        map.loadEntities(placeEntities, "entities");
 		add(s1sonic);
 
         soniccamera.follow(s1sonic, FlxCameraFollowStyle.LOCKON);
@@ -32,6 +46,8 @@ class DebugState extends FlxState
 	override public function update(elapsed:Float)
 	{
         super.update(elapsed);
+
+        FlxG.collide(player, walls);
 
         var movementSpeed:Float = 6.78;
         var jumpForce:Float = 6.5;
@@ -93,6 +109,14 @@ class DebugState extends FlxState
             switchtoContinue();
         }                        
 	}
+
+    function placeEntities(entity:EntityData)
+    {
+        if (entity.name == "player")
+        {
+            player.setPosition(entity.x, entity.y);
+        }
+    }
 
     function switchtoContinue()
     {
