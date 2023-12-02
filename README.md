@@ -10,7 +10,7 @@
 
 * Install visual studio code (to edit the code unless you have notepad++)
 
-* Install [Ogmo Editor 3](https://ogmo-editor-3.github.io/)
+* Install [Ogmo Editor 3](https://ogmo-editor-3.github.io/) (Unless you don't feel like editing the levels and making your own)
 
 # Creds
 
