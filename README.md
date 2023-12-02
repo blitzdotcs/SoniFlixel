@@ -8,7 +8,7 @@
 
 * Install Haxe and it's dependencies
 
-* Install visual studio code (to edit the code unless you haxe notepad++)
+* Install visual studio code (to edit the code unless you have notepad++)
 
 * Install [Ogmo Editor 3](https://ogmo-editor-3.github.io/)
 
